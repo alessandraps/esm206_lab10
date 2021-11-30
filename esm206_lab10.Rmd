@@ -49,4 +49,7 @@ praise("${creating}, Batman - this code is...${ADJECTIVE}!!!")
 
 Use cowsay::say() to make a character say something to you
 
+Use usethis::use_git() on the Console to make sure you create a git tab on your project
+
+Use usethis::use_github()
 
