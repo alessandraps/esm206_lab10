@@ -51,5 +51,44 @@ Use cowsay::say() to make a character say something to you
 
 Use usethis::use_git() on the Console to make sure you create a git tab on your project
 
-Use usethis::use_github()
+Use usethis::use_github() to create a repository on Github
+- then takes you to the repository
+- there update the branch name
+- one changed, copy and paste the code that it provides and then paste it on to the terminal
+
+## Paletteer to access thousands of color palettes 
+```{r}
+storms %>%
+  group_by(name) %>%
+  summarize(min_pressure = min(pressure, na.rm = TRUE)) %>%
+  slice_min(n = 10, min_pressure) %>%
+  ggplot(aes(x = min_pressure, y = name)) +
+  geom_col(aes(fill = name)) +
+  scale_fill_paletteer_d("palettetown::squirtle")
+```
+
+
+## One spatial data example
+- read_sf allows you to read in spacial data
+```{r}
+vegetation <- read_sf("doc.kml") %>%
+  select(Name) %>%
+  clean_names
+
+ggplot(data = vegetation) +
+  geom_sf(aes(fill = name), color = NA) +
+  theme_minimal() +
+  scale_fill_paletteer_d("ggthemes::manyeys") +
+  labs(title = "Jornada Basin LTER Vegetation",
+       caption = "Source: Jornada LTER")
+
+# Update theme to theme_mininal
+# Fill color change based on the vegetation
+# Color of line to NA (color = NA)
+```
+
+
+```{r}
+ggsave(filename = "my_awesome_map.jpg", width = 8, height = 5)
+```
 
